@@ -1,0 +1,941 @@
+/* 🍃 Groupify - Studio Ghibli Aesthetic Theme (Whimsical Nature & Warm Dreamlike UI) 🌳 */
+
+:root {
+  --bg: #FBF8F1;
+  --bg-pattern: radial-gradient(#C5D8D1 1.5px, transparent 1.5px);
+  --surface: #FFFFFF;
+  --surface-card: #FCFAF2;
+  --surface-accent: #E2ECE9;
+  --text: #2C3A33;
+  --text-muted: #5C6B64;
+  --text-title: #1B2922;
+  --border: #A8C3B8;
+  --border-wood: #D4C3B3;
+  --border-focus: #588157;
+  --shadow: 0 14px 35px rgba(107, 144, 128, 0.18);
+  --shadow-hover: 0 18px 45px rgba(107, 144, 128, 0.32);
+  
+  /* Ghibli Natural Palette */
+  --sage-green: #6B9080;
+  --forest-moss: #588157;
+  --soft-sage: #A8C3B8;
+  --pale-sage: #E2ECE9;
+  --warm-earth: #CB997E;
+  --soft-sand: #DDBEA9;
+  --dusty-teal: #83C5BE;
+  --sky-blue: #E8F1F5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Comfortaa', 'Nunito', 'Quicksand', sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(226, 236, 233, 0.65), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(232, 241, 245, 0.7), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(221, 190, 169, 0.25), transparent 45%),
+    var(--bg-pattern);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+/* Floating Ghibli soft dreamlike cloud orbs */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  top: -120px;
+  left: -140px;
+  background: #A8C3B8;
+}
+
+body::after {
+  right: -120px;
+  bottom: -120px;
+  background: #DDBEA9;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.page-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section,
+.card {
+  position: relative;
+  background: var(--surface-card);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-section:hover,
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: #92B4A7;
+}
+
+.hero-section::before,
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 45%, transparent 100%);
+  transform: translateX(-120%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+
+.hero-section:hover::before,
+.card:hover::before {
+  transform: translateX(120%);
+}
+
+.hero-section {
+  padding: 36px 34px;
+  isolation: isolate;
+  background: linear-gradient(135deg, #FCFAF2 0%, #E2ECE9 60%, #E8F1F5 100%);
+}
+
+.hero-section::after {
+  content: '🌿';
+  position: absolute;
+  inset: auto 30px 18px auto;
+  font-size: 5.5rem;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: -1;
+  animation: floatGhibli 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatGhibli {
+  from { transform: translateY(0px) rotate(-3deg); }
+  to { transform: translateY(-10px) rotate(5deg); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6B9080, #588157);
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 0.88rem;
+  box-shadow: 0 6px 18px rgba(88, 129, 87, 0.35);
+}
+
+.hero-section h1 {
+  margin: 18px 0 10px;
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text-title);
+  text-shadow: 0 2px 8px rgba(107, 144, 128, 0.2);
+}
+
+.hero-copy {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+.content-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.panel {
+  padding: 28px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--forest-moss);
+  text-transform: uppercase;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-title);
+}
+
+.action-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-title);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+textarea,
+input,
+select {
+  width: 100%;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 14px 18px;
+  color: var(--text);
+  background: #FFFDF9;
+  outline: none;
+  box-shadow: inset 0 2px 5px rgba(107, 144, 128, 0.08);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: #8A9B93;
+  font-size: 0.95rem;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 4px rgba(88, 129, 87, 0.22);
+  transform: translateY(-2px);
+  background: #FFFFFF;
+}
+
+textarea {
+  min-height: 190px;
+  resize: vertical;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.field-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+/* BUTTONS GHIBLI AESTHETIC STYLING */
+.primary-btn,
+.secondary-btn,
+.ghost-btn,
+.next-btn {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.2s ease;
+}
+
+/* Tombol Utama (Sage Moss Green) */
+.primary-btn {
+  width: 100%;
+  padding: 18px 26px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #6B9080 0%, #588157 100%);
+  box-shadow: 0 10px 24px rgba(88, 129, 87, 0.35);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(88, 129, 87, 0.5);
+  background: linear-gradient(135deg, #588157 0%, #4A7049 100%);
+}
+
+/* Tombol Sekunder (Earthy Sage & Wood) */
+.secondary-btn {
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #6B9080, #A8C3B8);
+  box-shadow: 0 8px 20px rgba(107, 144, 128, 0.3);
+}
+
+.secondary-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 24px rgba(107, 144, 128, 0.45);
+}
+
+/* Tombol Ghost (Warm Terracotta Wood / Dusty Blue) */
+.ghost-btn {
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #3A2E26;
+  background: #F2E8DF;
+  border: 2px solid var(--border-wood);
+}
+
+.ghost-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: #E8DAD0;
+  box-shadow: 0 8px 20px rgba(203, 153, 126, 0.35);
+}
+
+.mute-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 95;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: #FCFAF2;
+  color: var(--text);
+  font-size: 1.3rem;
+  box-shadow: 0 10px 24px rgba(107, 144, 128, 0.25);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.22s ease, box-shadow 0.22s ease;
+  cursor: pointer;
+}
+
+.mute-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  background: #E2ECE9;
+  box-shadow: 0 12px 28px rgba(107, 144, 128, 0.4);
+}
+
+.mute-btn.active {
+  background: #FADED7;
+  border-color: #CB997E;
+}
+
+/* Shake animation for textarea */
+.shake {
+  animation: ghibliShake 560ms cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes ghibliShake {
+  10%, 90% { transform: translateX(-2px) rotate(-1deg); }
+  20%, 80% { transform: translateX(3px) rotate(1deg); }
+  30%, 50%, 70% { transform: translateX(-4px) rotate(-1deg); }
+  40%, 60% { transform: translateX(4px) rotate(1deg); }
+}
+
+.ghost-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Toast notifications Ghibli */
+.toast-container {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 220;
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  width: min(340px, calc(100vw - 32px));
+  background: #FCFAF2;
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 14px 18px 14px 30px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(107, 144, 128, 0.25);
+  font-weight: 700;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(-14px);
+  transition: opacity 240ms ease, transform 240ms ease;
+  pointer-events: auto;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast::before {
+  content: '🍃';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+}
+
+.toast.success::before { content: '🌟'; }
+.toast.error::before { content: '🍂'; }
+.toast.info::before { content: '📜'; }
+
+/* RINGKASAN KELOMPOK GHIBLI */
+.summary-list {
+  display: grid;
+  gap: 16px;
+}
+
+.summary-card {
+  border-radius: 22px;
+  padding: 20px;
+  background: linear-gradient(135deg, #FCFAF2 0%, #E2ECE9 100%);
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 20px rgba(107, 144, 128, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(107, 144, 128, 0.28);
+}
+
+.summary-card h3 {
+  margin: 0 0 12px;
+  color: var(--forest-moss);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.summary-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text);
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.summary-card li::marker {
+  color: var(--sage-green);
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+/* MODAL POP-UP GHIBLI REVEAL */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 58, 51, 0.45);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  z-index: 30;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 560px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) scale(0.94);
+  z-index: 40;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 88vh;
+  padding: 28px 24px 22px;
+  border-radius: 28px;
+  background: #FCFAF2;
+  border: 3px solid var(--border);
+  box-shadow: 0 25px 65px rgba(88, 129, 87, 0.32);
+  animation: ghibliPop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.modal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #588157, #6B9080, #A8C3B8, #DDBEA9, #CB997E);
+}
+
+.modal-header {
+  flex-shrink: 0;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+  border-bottom: 2px dashed #C5D8D1;
+  text-align: center;
+}
+
+.modal-tag {
+  display: inline-block;
+  margin: 4px 0 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #E2ECE9;
+  color: #3A6351;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--border);
+}
+
+.modal-card h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  color: var(--text-title);
+  font-weight: 700;
+}
+
+.modal-meta {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.member-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 4px 6px 18px 0;
+  list-style: none;
+  max-height: 48vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.member-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.member-list::-webkit-scrollbar-track {
+  background: #E2ECE9;
+  border-radius: 999px;
+}
+
+.member-list::-webkit-scrollbar-thumb {
+  background: #A8C3B8;
+  border-radius: 999px;
+}
+
+.member-list::-webkit-scrollbar-thumb:hover {
+  background: #6B9080;
+}
+
+.member-item {
+  position: relative;
+  padding: 14px 18px 14px 44px;
+  border-radius: 18px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.02rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2ECE9 100%);
+  border: 2px solid var(--border);
+  box-shadow: 0 6px 16px rgba(107, 144, 128, 0.16);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: ghibliFadeUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(var(--delay, 0) * 100ms);
+}
+
+.member-item::before {
+  content: '🌱';
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.05rem;
+}
+
+/* Alternate cute Ghibli nature icons for member items */
+.member-item:nth-child(2n)::before { content: '🍃'; }
+.member-item:nth-child(3n)::before { content: '🌳'; }
+.member-item:nth-child(4n)::before { content: '🐾'; }
+.member-item:nth-child(5n)::before { content: '🍂'; }
+.member-item:nth-child(6n)::before { content: '🌰'; }
+
+.modal-footer {
+  flex-shrink: 0;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px dashed #C5D8D1;
+}
+
+.modal-footer .ghost-btn,
+.modal-footer .next-btn {
+  flex: 1 1 50%;
+  min-width: 0;
+  padding: 14px 18px;
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  font-size: clamp(0.85rem, 2.2vw, 0.98rem);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.next-btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #6B9080, #588157);
+  box-shadow: 0 10px 24px rgba(88, 129, 87, 0.35);
+}
+
+.next-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(88, 129, 87, 0.5);
+}
+
+.next-btn.done {
+  background: linear-gradient(135deg, #83C5BE, #588157);
+  color: #FFFFFF;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: #E2ECE9;
+  color: var(--text-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.22s ease, background 0.22s ease;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: #A8C3B8;
+  color: #FFFFFF;
+}
+
+/* DIALOG MODAL GHIBLI */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 58, 51, 0.45);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 50;
+}
+
+.dialog-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dialog-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 55;
+}
+
+.dialog-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dialog-card {
+  width: min(92vw, 420px);
+  padding: 26px;
+  border-radius: 24px;
+  background: #FCFAF2;
+  border: 3px solid var(--border);
+  box-shadow: 0 20px 50px rgba(88, 129, 87, 0.3);
+}
+
+.dialog-card h3 {
+  margin: 0 0 10px;
+  color: var(--text-title);
+  font-size: 1.25rem;
+}
+
+.dialog-card p {
+  margin: 0 0 16px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.dialog-input-wrap {
+  display: none;
+  margin-bottom: 16px;
+}
+
+.dialog-input-wrap.active {
+  display: block;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dialog-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: inherit;
+  transition: transform 0.2s ease;
+}
+
+.dialog-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.dialog-btn.primary {
+  background: linear-gradient(135deg, #6B9080, #588157);
+  color: white;
+  box-shadow: 0 6px 18px rgba(88, 129, 87, 0.35);
+}
+
+.dialog-btn.secondary {
+  background: #F2E8DF;
+  color: #3A2E26;
+  border: 1px solid var(--border-wood);
+}
+
+@keyframes ghibliPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0;
+  }
+  65% {
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ghibliFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE LAYOUT */
+@media (min-width: 980px) {
+  .content-grid {
+    grid-template-columns: 1.35fr 0.95fr;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    padding: 16px;
+  }
+
+  .hero-section,
+  .panel,
+  .modal-card {
+    border-radius: 20px;
+  }
+
+  .hero-section {
+    padding: 26px 20px;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .action-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 580px) {
+  body {
+    padding: 12px;
+  }
+
+  .hero-section {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  .panel {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .modal {
+    width: 95vw;
+  }
+
+  .modal-card {
+    padding: 22px 16px 16px;
+    border-radius: 22px;
+    max-height: 90vh;
+  }
+
+  .modal-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .member-list {
+    max-height: 48vh;
+    padding-right: 2px;
+    margin-top: 10px;
+  }
+
+  .member-item {
+    padding: 12px 14px 12px 38px;
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .modal-footer .ghost-btn,
+  .modal-footer .next-btn {
+    width: 100%;
+    flex: 1 1 100%;
+    min-height: 46px;
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+}

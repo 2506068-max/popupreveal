@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groupify — Informatika C 25</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="hero-section">
+      <div class="hero-badge">🍃 REVEAL - REVEAL MANJA 🍃</div>
+      <h1>Groupify 🌳</h1>
+      <p class="hero-copy">Informatika C 25 🐾</p>
+    </header>
+
+    <main class="content-grid">
+      <section class="card panel input-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">🌱 INPUT MAHASISWA</p>
+            <h2>Masukkan daftar mahasiswa 🌿</h2>
+          </div>
+          <div class="action-row">
+            <button id="demoBtn" class="secondary-btn">Demo Data 🍂</button>
+            <button id="shuffleBtn" class="ghost-btn">Kocok 🍃</button>
+            <button id="clearBtn" class="ghost-btn">Kosongkan 🧹</button>
+          </div>
+        </div>
+
+        <label class="field-label" for="studentNames">Satu nama per baris 📝</label>
+        <textarea id="studentNames" rows="10" placeholder="✨ Tulis nama teman-temanmu di sini, ya... 🍃&#10;Aira&#10;Bima&#10;Citra&#10;Doni"></textarea>
+
+        <div class="settings-grid">
+          <div class="field-card">
+            <label for="modeSelect">Metode Pembagian 🌿</label>
+            <select id="modeSelect">
+              <option value="groupCount">Jumlah Kelompok</option>
+              <option value="memberCount">Jumlah Anggota per Kelompok</option>
+            </select>
+          </div>
+          <div class="field-card">
+            <label id="modeLabel" for="groupValue">Jumlah Kelompok 🔢 🍃</label>
+            <input id="groupValue" type="number" min="1" value="4" />
+          </div>
+        </div>
+
+        <button id="revealBtn" class="primary-btn">Bagi Kelompok & Mulai 🎉 🌿</button>
+      </section>
+
+      <section class="card panel summary-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">📜 RINGKASAN</p>
+            <h2>Hasil setelah selesai 🌟</h2>
+          </div>
+          <div class="action-row">
+            <button id="copyBtn" class="secondary-btn">Salin Hasil 📜</button>
+            <button id="printBtn" class="ghost-btn">Cetak Hasil 🍃</button>
+          </div>
+        </div>
+        <div id="summaryList" class="summary-list">
+          <p class="empty-state">🍃 Ringkasan akan muncul di sini setelah semua kelompok di-reveal. 🐾</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button id="closeBtn" class="close-btn" aria-label="Tutup popup">✕</button>
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <p class="modal-tag">✨ BIG DEAL REVEAL 🍃</p>
+          <h2 id="modalTitle">✨ KELOMPOK 1 🌳</h2>
+          <p id="modalMeta" class="modal-meta"></p>
+        </div>
+      </div>
+
+      <div id="memberContainer" class="member-container">
+        <ul id="memberList" class="member-list"></ul>
+      </div>
+
+      <div class="modal-footer">
+        <button id="prevBtn" class="ghost-btn">⬅️ Kelompok Sebelumnya</button>
+        <button id="nextBtn" class="next-btn">Kelompok Selanjutnya ➡️ 🍃</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dialogOverlay" class="dialog-overlay" aria-hidden="true"></div>
+  <div id="dialogModal" class="dialog-modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <div class="dialog-card">
+      <h3 id="dialogTitle">Konfirmasi 🍃</h3>
+      <p id="dialogMessage"></p>
+      <div class="dialog-input-wrap">
+        <input id="dialogInput" type="text" placeholder="Masukkan nilai" />
+      </div>
+      <div class="dialog-actions">
+        <button id="dialogCancelBtn" class="dialog-btn secondary">Batal</button>
+        <button id="dialogConfirmBtn" class="dialog-btn primary">Oke 🌿</button>
+      </div>
+    </div>
+  </div>
+
+  <button id="muteBtn" class="mute-btn" aria-label="Mute atau unmute suara">🔊</button>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="script.js?v=19"></script>
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+</body>
+
+</html>
