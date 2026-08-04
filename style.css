@@ -1,4 +1,4 @@
-/* 🍃 Groupify - Studio Ghibli Aesthetic Theme (Whimsical Nature & Warm Dreamlike UI) 🌳 */
+/* 🍃 Groupify - Studio Ghibli Aesthetic Theme (Whimsical Nature & Warm Dreamlike UI) 🍃 */
 
 :root {
   --bg: #FBF8F1;
@@ -719,7 +719,7 @@ textarea {
 
 /* Alternate cute Ghibli nature icons for member items */
 .member-item:nth-child(2n)::before { content: '🍃'; }
-.member-item:nth-child(3n)::before { content: '🌳'; }
+.member-item:nth-child(3n)::before { content: '🌿'; }
 .member-item:nth-child(4n)::before { content: '🐾'; }
 .member-item:nth-child(5n)::before { content: '🍂'; }
 .member-item:nth-child(6n)::before { content: '🌰'; }
